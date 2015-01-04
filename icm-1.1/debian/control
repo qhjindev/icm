@@ -1,0 +1,26 @@
+Source: icm
+Section: net
+Priority: optional
+#Homepage: http://ceph.newdream.net/
+#Vcs-Git: git://github.com/NewDreamNetwork/ceph.git
+#Vcs-Browser: https://github.com/NewDreamNetwork/ceph
+Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.hu>
+#Uploaders: Sage Weil <sage@newdream.net>
+Build-Depends: debhelper (>= 6.0.7~)
+Standards-Version: 3.9.1
+
+Package: icm
+Architecture: any
+Depends: 
+Description: icm
+
+#Package: tdfs-mgmt
+#Architecture: linux-any
+#Depends: ${shlibs:Depends}, ${misc:Depends}  
+#Description: this package contains all management tools for administering a tdfs storage cluster.
+
+#Package: tdfs-devel
+#Architecture: linux-any
+#Depends: ${shlibs:Depends}, ${misc:Depends}  
+#Description: this package contains all library for development tdfs interface.
+

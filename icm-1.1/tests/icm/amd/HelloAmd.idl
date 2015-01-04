@@ -1,0 +1,16 @@
+#ifndef HELLO_AMD_IDL
+#define HELLO_AMD_IDL
+
+module demo
+{
+
+class Hello
+{
+  //string sayHello(string msg, short u, out long v);
+  ["amd"] string sayBye (string msg, short u, out long v);
+};
+
+
+};
+
+#endif //HELLO_AMD_IDL

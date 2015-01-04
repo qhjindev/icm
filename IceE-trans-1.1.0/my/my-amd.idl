@@ -1,0 +1,27 @@
+#ifndef MY_ICE
+#define MY_ICE
+
+module demo
+{
+/*
+struct package
+{
+  string str1;
+  long length;
+  int op;
+};
+  void func(string msg, long time);
+  long sayBye (string msg, float time, out string bye);
+*/
+  
+class MyHello
+{
+  //string sayHello(string msg, short u, out long v);
+  ["amd"] string sayBye (string msg, short u, out long v);
+  //["ami", "amd"] long testHello (long v1, short v2, float v3, out double v, out string v5);
+};
+
+
+};
+
+#endif

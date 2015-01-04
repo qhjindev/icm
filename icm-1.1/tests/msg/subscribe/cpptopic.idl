@@ -1,0 +1,29 @@
+#ifndef CPPTOPIC_IDL
+#define CPPTOPIC_IDL
+
+// java c++ cross comm test
+module CppTopic 
+{
+
+struct Request1
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  int cpu;
+  int mem;
+};
+
+struct Request2
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  string result;
+  int state;
+};
+
+};
+
+#endif //CPPTOPIC_IDL
+

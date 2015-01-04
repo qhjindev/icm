@@ -1,0 +1,52 @@
+
+
+all: libicm.so libicm.a
+
+icm: libicm.so
+
+CPPFLAGS +=  -Wall -fPIC -g -D_REENTRANT -DACE_HAS_AIO_CALLS -D_GNU_SOURCE -DACE_NO_INLINE -DACE_HAS_LINUX_NPTL -I../
+LDFLAGS += -L.
+
+ICMOBJ = \
+  AmhResponseHandler.o \
+  ClientStrategyFactory.o \
+  Communicator.o \
+  Endpoint.o \
+  Identity.o \
+  IcmProtocol.o \
+  IcmStream.o \
+  Invocation.o \
+  Object.o \
+  ObjectAdapter.o \
+  ObjectAdapterFactory.o \
+  Pluggable.o \
+  Proxy.o \
+  Reference.o \
+  ReplyDispatcher.o \
+  ResourceFactory.o \
+  ServantManager.o \
+  ServerRequest.o \
+  TcpAcceptor.o \
+  TcpConnection.o \
+  TcpConnector.o \
+  TcpTransport.o \
+  TransportCacheManager.o \
+  TransportMuxStrategy.o \
+  WaitStrategy.o
+  
+libicm.a: $(ICMOBJ) 
+	rm -rf libicm.a
+	ar cru libicm.a $(ICMOBJ)
+	ranlib libicm.a
+	mv libicm.a ../lib
+
+libicm.so: $(ICMOBJ)
+	g++ -shared -Wl,+h,libicm.so -o ../lib/libicm.so $(ICMOBJ)
+
+%o: %.cpp
+	g++ $(CPPFLAGS) -c $< -o $@
+
+clean: 
+	rm -rf *.o ../lib/libicm.a ../lib/libicm.so
+
+

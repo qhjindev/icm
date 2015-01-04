@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "icc", "..\..\icc\icc.vcproj", "{0329158B-DF85-4735-BFB9-2EFA2EA3AC78}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "icm", "..\..\icm\icm.vcproj", "{A1B15CE0-04C9-4924-895F-E6BB53F3C834}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_locator_server", "test_locator_server.vcproj", "{62F0998D-6731-4E0A-82E8-AA4C637F82A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0329158B-DF85-4735-BFB9-2EFA2EA3AC78}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0329158B-DF85-4735-BFB9-2EFA2EA3AC78}.Debug|Win32.Build.0 = Debug|Win32
+		{0329158B-DF85-4735-BFB9-2EFA2EA3AC78}.Release|Win32.ActiveCfg = Release|Win32
+		{0329158B-DF85-4735-BFB9-2EFA2EA3AC78}.Release|Win32.Build.0 = Release|Win32
+		{A1B15CE0-04C9-4924-895F-E6BB53F3C834}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A1B15CE0-04C9-4924-895F-E6BB53F3C834}.Debug|Win32.Build.0 = Debug|Win32
+		{A1B15CE0-04C9-4924-895F-E6BB53F3C834}.Release|Win32.ActiveCfg = Release|Win32
+		{A1B15CE0-04C9-4924-895F-E6BB53F3C834}.Release|Win32.Build.0 = Release|Win32
+		{62F0998D-6731-4E0A-82E8-AA4C637F82A2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{62F0998D-6731-4E0A-82E8-AA4C637F82A2}.Debug|Win32.Build.0 = Debug|Win32
+		{62F0998D-6731-4E0A-82E8-AA4C637F82A2}.Release|Win32.ActiveCfg = Release|Win32
+		{62F0998D-6731-4E0A-82E8-AA4C637F82A2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,41 @@
+#ifndef MY_HELLO
+#define MY_HELLO
+
+module demo
+{
+struct S1 {
+  int id;
+  string name;
+};
+sequence<S1> Reqs;
+dictionary<short,S1> Dict;
+dictionary<string,Reqs> Dicta;
+sequence<Dicta> Com;
+
+struct TestReq {
+  int syn;
+  Reqs reqs1;
+};
+
+struct TestReqDict {
+  int syn;
+  Dict dict1;
+};
+
+struct TestReqCom {
+  int syn;
+  Com com1;
+};
+
+class MyHello
+{
+  ["ami","amd"] string sayHello (string msg, short u, out long v);
+  ["ami","amd"] string testSequence (TestReq req);
+  ["ami","amd"] string testDictionary (TestReqDict req);
+  ["ami","amd"] string testCompound (TestReqCom req);
+};
+
+
+};
+
+#endif

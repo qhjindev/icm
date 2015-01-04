@@ -1,0 +1,25 @@
+#ifndef MSG_IDL
+#define MSG_IDL
+
+module demo
+{
+
+struct MsgReq
+{
+  long seq;
+  string ip;
+  short port;
+  string event;
+};
+
+struct MsgRes
+{
+  long seq;
+  string result;
+  string status;
+};
+
+};
+
+#endif //MSG_IDL
+

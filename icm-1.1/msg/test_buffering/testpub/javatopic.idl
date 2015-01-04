@@ -1,0 +1,29 @@
+#ifndef JAVATOPIC_IDL
+#define JAVATOPIC_IDL
+
+// java c++ cross comm test
+module JavaTopic 
+{
+
+struct Request3
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  int cpu;
+  int mem;
+};
+
+struct Request4
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  string result;
+  int state;
+};
+
+};
+
+#endif //JAVATOPIC_IDL
+

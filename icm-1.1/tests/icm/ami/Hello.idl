@@ -1,0 +1,16 @@
+#ifndef HELLO_ICM
+#define HELLO_ICM
+
+module demo
+{
+
+class Hello
+{
+  string sayHello(string msg, short u, out long v);
+  ["ami"] string sayBye (string msg, short u, out long v);
+};
+
+
+};
+
+#endif //HELLO_ICM

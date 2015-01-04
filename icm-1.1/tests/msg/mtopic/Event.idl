@@ -1,0 +1,35 @@
+#ifndef NETWORK_IDL
+#define NETWORK_IDL
+
+module demo
+{
+
+
+struct NetEvent
+{
+  string ip;
+  short port;
+  string event;
+};
+
+struct AlarmEvent
+{
+  string id;
+  string image;
+  int mds;
+};
+
+class Network
+{
+  void reportEvent(NetEvent event);
+};
+
+class Alarm
+{
+  void reportAlarm(AlarmEvent event);
+};
+
+};
+
+#endif //NETWORK_IDL
+

@@ -1,0 +1,35 @@
+
+all: icmmsg libicmmsg.so libicmmsg.a
+
+CPPFLAGS +=  -Wall -fPIC -g -O0 -D_REENTRANT -DACE_HAS_AIO_CALLS -D_GNU_SOURCE -DACE_NO_INLINE -DACE_HAS_LINUX_NPTL -I../
+LDFLAGS+=-L../lib -L../ -lpthread -lrt -licc -licm
+
+ICMMSGOBJ = \
+  Msg.o \
+  MsgProtocol.o \
+  PublisherProxy.o \
+  SubscriberProxy.o \
+  TopicManager.o \
+  PublishClient.o \
+  SubscribeClient.o \
+  MsgBroker.o \
+  MsgBrokerI.o \
+  MsgClient.o \
+  MsgServer.o
+
+libicmmsg.a: $(ICMMSGOBJ) 
+	ar crus ../lib/libicmmsg.a $(ICMMSGOBJ)
+
+libicmmsg.so: $(ICMMSGOBJ)
+	g++ -shared -Wl,-soname,libicmmsg.so -o ../lib/libicmmsg.so $(ICMMSGOBJ)
+
+icmmsg: $(ICMMSGOBJ) Main.o
+	g++ $(LDFLAGS) -o ../bin/icmmsg $(ICMMSGOBJ) Main.o
+
+%o: %.cpp
+	g++ $(CPPFLAGS) -c $< -o $@
+
+clean: 
+	rm -rf *.o ../lib/libicmmsg.a ../lib/libicmmsg.so ../bin/icmmsg
+
+

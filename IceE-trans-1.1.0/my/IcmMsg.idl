@@ -1,0 +1,44 @@
+#ifndef ICM_MSG_ICM
+#define ICM_MSG_ICM
+
+//#include "Topic.idl"
+
+module IcmMsg
+{
+
+interface Topic
+{
+    //Get the name of the topic
+    string getName();
+        
+    //Get a proxy to a publisher object for this topic
+    Object* getPublisher();
+    
+    //Subscribe to the topic.
+    void subscribe(Object* subscriber);
+    
+    //Unsubscriber the given subscriber.
+    void unsubscriber(Object* subscriber);
+    
+    //Destroy the topic
+    void destroy();
+};
+
+dictionary<string, Topic*> TopicDict;
+
+interface TopicManager
+{
+    //Create a new topic. The topic name must be unique.
+    Topic* create(string name);
+    
+    //Retrieve a topic by name.
+    Topic* retrieve(string name);
+    
+    //Retrieve all topics managed by this topic manager.
+    TopicDict retrieveAll();
+};
+
+};
+
+
+#endif

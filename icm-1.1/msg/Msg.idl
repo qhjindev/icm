@@ -1,0 +1,25 @@
+#ifndef ICM_MSG_IDL
+#define ICM_MSG_IDL
+
+module Icm
+{
+
+struct Subscribe
+{
+  string topic;
+};
+
+struct UnSubscribe
+{
+  string topic;
+};
+
+struct Publish
+{
+  string topic;
+};
+
+};
+
+#endif //ICM_MSG_IDL
+

@@ -1,0 +1,14 @@
+#ifndef MY_IDL
+#define MY_IDL
+
+module demo
+{
+  
+class MyHello
+{
+  string sayHello(string msg, short u, out long v);
+};
+
+};
+
+#endif

@@ -1,0 +1,23 @@
+#ifndef MSG_IDL
+#define MSG_IDL
+
+module demo
+{
+
+struct NetEvent
+{
+  string ip;
+  short port;
+  string event;
+};
+
+struct MsgEvent
+{
+  string seq;
+  string status;
+};
+
+};
+
+#endif //MSG_IDL
+

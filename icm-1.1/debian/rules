@@ -1,0 +1,94 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+export DH_VERBOSE=1
+export DESTDIR=$(CURDIR)
+#export DESTDIR=$(CURDIR)/debian/tmp
+
+ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  NUMJOBS = $(patsubst parallel=%,%,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))
+  MAKEFLAGS += -j$(NUMJOBS)
+endif
+
+export DEB_HOST_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+export DEB_BUILD_GNU_TYPE ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
+
+# Recommended snippet for Autoconf 2.52 or later
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  confflags += --build $(DEB_HOST_GNU_TYPE)
+else
+  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
+export DEB_HOST_ARCH      ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+ifeq ($(DEB_HOST_ARCH), armel)
+  extraopts += --without-libatomic-ops
+endif
+
+ifneq ($(DEB_HOST_ARCH), i386)
+ifneq ($(DEB_HOST_ARCH), amd64)
+  extraopts += --without-tcmalloc
+endif
+endif
+
+ifeq ($(shell grep -c -E '^Build-Depends:(.*,)?[[:space:]]*libgoogle-perftools-dev([[:space:]]|,|$$)' debian/control),0)
+  extraopts += --without-tcmalloc
+endif
+
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	touch $@
+
+build: build-stamp
+build-stamp: configure-stamp  
+	dh_testdir
+
+	$(MAKE)
+
+	touch $@
+
+clean:
+	dh_testdir
+	dh_testroot
+	#$(MAKE) clean
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_clean -k 
+	dh_installdirs
+
+# Add here commands to install the package into debian/testpack.
+# Build architecture-independent files here.
+binary-indep: build install
+
+# We have nothing to do by default.
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+	dh_installchangelogs 
+	#dh_installdocs --all ChangeLog
+	dh_installexamples
+	dh_install --sourcedir=$(DESTDIR) --list-missing
+	dh_installlogrotate
+	dh_installinit  --no-start
+	dh_installman
+	dh_lintian
+	dh_link
+
+	dh_compress
+	dh_fixperms
+	dh_makeshlibs -n  # we do the postinst/postrm scripts manually
+	dh_pysupport
+	dh_installdeb
+	#dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install configure

@@ -1,0 +1,41 @@
+#ifndef M_CLIENT_EVENT_IDL
+#define M_CLIENT_EVENT_IDL
+
+module Icm
+{
+
+struct Port
+{
+  int i;
+  string str;
+};
+
+struct Device
+{
+  string d;
+  string a;
+};
+
+sequence<Port> Ports;
+
+struct Event1
+{
+  string topic;
+  short item1;
+  string item2;
+  Device dev;
+  Ports conn;
+};
+
+struct Event2
+{
+  string topic;
+  short item1;
+  string item2;
+};
+
+
+};
+
+#endif //M_CLIENT_EVENT_IDL
+

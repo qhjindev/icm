@@ -1,0 +1,33 @@
+#ifndef MY_TEST
+#define MY_TEST
+
+module demo
+{
+
+sequence<string> Req1;
+sequence<int> Req1I;
+
+dictionary<int,string> Req2;
+
+struct Req3{
+  int syn;
+  Req1 request1;
+};
+
+struct Req4 inherit Req3 {
+  int syn2;
+};
+
+sequence<Req3> Req1R;
+class MyHello
+{
+  ["ami","amd"] string sayHello1 (Req1 req);
+  ["ami","amd"] string sayHello1I (Req1I req);
+  ["ami","amd"] string sayHello1R (Req1R req);
+  ["ami","amd"] string sayHello2 (Req2 req);
+  ["ami","amd"] string sayHello3 (Req3 req);
+};
+
+};
+
+#endif

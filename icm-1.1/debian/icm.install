@@ -1,0 +1,6 @@
+conf/icmmsg.ini /opt/icm/conf
+bin/icmmsg /opt/icm/bin
+lib/libicc.so /opt/icm/lib
+lib/libicm.so /opt/icm/lib
+lib/libicmmsg.so /opt/icm/lib
+#log/ /opt/icm/log/

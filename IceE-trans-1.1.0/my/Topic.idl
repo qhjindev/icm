@@ -1,0 +1,31 @@
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module IcmMsg
+{
+
+interface Topic
+{
+    //Get the name of the topic
+    string getName();
+        
+    //Get a proxy to a publisher object for this topic
+    Object* getPublisher();
+    
+    //Subscribe to the topic.
+    void subscribe(Object* subscriber);
+    
+    //Unsubscriber the given subscriber.
+    void unsubscriber(Object* subscriber);
+    
+    //Destroy the topic
+    void destroy();
+};
+
+dictionary<string, Topic*> TopicDict;
+
+};
+
+#endif //TOPIC_IDL
+
+

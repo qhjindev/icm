@@ -1,0 +1,15 @@
+#ifndef MY_HELLO
+#define MY_HELLO
+
+module demo
+{
+
+class MyHello
+{
+  ["ami","amd"] string sayHello (string msg, short u, out long v);
+};
+
+
+};
+
+#endif

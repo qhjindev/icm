@@ -1,0 +1,267 @@
+#ifndef TVM_EVENT_IDL
+#define TVM_EVENT_IDL
+
+module TvmEvt1
+{
+
+
+struct SanInfo
+{
+  string ip;
+  short port;
+  string user;
+  string passwd;
+};
+
+struct CephInfo
+{
+  string ip;
+  short port;
+};
+
+struct VSwitchInfo
+{
+  string nicName;
+  string bridge;
+};
+
+sequence<VSwitchInfo> VSwitchs;
+
+struct StorageEngineInfo
+{
+  string ip;
+  short port;
+};
+
+struct Disk {
+  string id;
+  string name;
+  string type;
+  string poolName;
+  string iqn;
+  string device;
+};
+
+sequence<Disk> Disks;
+
+struct RunInstanceRequest
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  int cpu;
+  int mem;
+  string imageId;
+  string networkType;
+  string vlanId;
+  string netmask;
+  string gateway;
+  string ip;
+  string mac;
+  string bridge;
+  string hostNicName;
+  string port;
+  Disks diskList;
+};
+
+struct RunInstancesResult
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  string result;
+  int state;
+};
+
+struct RunInstanceProgress
+{
+  string nodeId;
+  string instanceId;
+  int state;
+  long time;
+};
+
+struct TerminateInstanceRequest
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+};
+
+struct TerminateInstanceResult
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  string result;
+  int state;
+};
+
+struct StartInstanceRequest
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+};
+
+struct StartInstanceResult
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  int state;
+  string result;
+};
+
+struct StopInstanceRequest
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+};
+
+struct StopInstanceResult
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  int state;
+  string result;
+};
+
+struct RunScriptRequest
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  string type;        //valid types: script, file
+  string dir;
+  string fname;
+};
+
+struct RunScriptResult
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  string result;
+};
+
+struct QueryInstanceRequest
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+};
+
+struct QueryInstanceResult
+{
+  int seq;
+  string nodeId;
+  string instanceId;
+  int state;
+  string result;
+};
+
+struct AttachVolumeRequest
+{
+  int seq;
+  string nodeId;
+  string volumeId;
+  string iqn;
+  string instanceId;
+  string device;
+  SanInfo san;
+};
+
+struct AttachVolumeResult
+{
+  int seq;
+  string nodeId;
+  string volumeId;
+  string instanceId;
+  string device;
+  string result;
+  string state; //attaching, attached, detaching, detached, failed
+  int attachTime;
+};
+
+struct DetachVolumeRequest
+{
+  int seq;
+  string nodeId;
+  string volumeId;
+  string iqn;
+  string instanceId;
+  string device;
+  SanInfo san;
+};
+
+struct DetachVolumeResult
+{
+  int seq;
+  string nodeId;
+  string volumeId;
+  string instanceId;
+  string device;
+  string result;
+  string state; //attaching, attached, detaching, detached, failed
+  int detachTime;
+};
+
+struct VmStat
+{
+  string nodeId;
+  string instanceId;
+  int memory;
+  int cpu;
+  long rxBytes;
+  long rxPackets;
+  long txBytes;
+  long txPackets;
+};
+
+struct RegisterNodeRequest
+{
+  int seq;
+  string networkType;
+  string nodeId;
+  string hostname;
+  string nodeIp;
+  string nodeOs;
+  string initiatorIqn;
+  int totalCpu;
+  long totalMem;
+  long totalDisk;
+};
+
+struct RegisterNodeResult
+{
+  int seq;
+  string nodeId;
+  SanInfo san;
+  CephInfo ceph;
+  StorageEngineInfo storageEninge;
+  VSwitchs vswitchList;
+  string bootImgLoc;
+  string bootImgPoolName;
+  string addrAssignMode;
+  string result;
+};
+
+struct UnRegisterNodeRequest
+{
+  int seq;
+  string nodeId;
+};
+
+struct UnRegisterNodeResult
+{
+  int seq;
+  string nodeId;
+  string result;
+};
+
+};
+
+#endif //TVM_EVENT_IDL

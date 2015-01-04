@@ -1,0 +1,28 @@
+#ifndef MSGBROKER_IDL
+#define MSGBROKER_IDL
+
+module MsgBroker 
+{
+
+sequence<string> Topics;
+struct QueryStateReq {
+  Topics ts;
+};
+
+struct State {
+  string topic;
+  bool s;
+}; 
+
+sequence<State> States;
+struct QueryStateRes {
+  States ss;
+};
+
+class QueryState {
+  ["ami"] int queryStates(QueryStateReq req, out QueryStateRes res);
+};
+
+};
+
+#endif //MSGBROKER_IDL

@@ -1,0 +1,13 @@
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Name: ceph
+Maintainer: Sage Weil <sage@newdream.net>
+Source: http://ceph.newdream.net/
+
+Files: *
+Copyright:(c) 2011 by Jeff Wu <cpwu@tnsoft.com.cn>
+(c) 2004-2010 by Sage Weil <sage@newdream.net>
+License: LGPL2.1 (see /usr/share/common-licenses/LGPL-2.1)
+
+Packaging:
+    Copyright (C) 2011 by Jeff Wu <cpwu@tnsoft.com.cn>
+    Licensed under LGPL-2.1

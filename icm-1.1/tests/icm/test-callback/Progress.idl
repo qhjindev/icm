@@ -1,0 +1,24 @@
+#ifndef ICM_TEST1_IDL
+#define ICM_TEST1_IDL
+
+module My
+{
+
+struct OpProgress {
+  int seq;
+  string status;
+};
+
+class MyCallback {
+  void reportProgress(OpProgress progress);
+};
+
+class VmService {
+    int setCallback(MyCallback* cb);  
+};
+
+};
+
+#endif //ICM_TEST1_IDL
+
+
