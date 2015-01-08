@@ -1,8 +1,7 @@
 icm
 ===
 
-ICM(internet communication manager) is a high performance, lightweight distributed communication framework that support 
-the development of concurrency, realtime and distributed applications using c++/java language.
+ICM(internet communication manager), refactored from ACE/TAO/ICE, is a high performance, lightweight distributed communication framework that support the development of concurrency, realtime and distributed applications using c++/java language.
 
   The framework include three major components:
 
