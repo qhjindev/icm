@@ -6,11 +6,11 @@ ICM(internet communication manager), refactored from ACE/TAO/ICE, is a high perf
   The framework include three major components:
 
   ICM(internet communication manager): a framework that support multiple protocols, heterogeneous environment:
-    support pub/sub message and rpc-style remote invocation
-    Support pluggable transport protocol implementations. 
-    Support client side synch/asynch method invocation
-    Support server side synch/asynch method dispatch
-    Support efficient data marshal/demarshal..
+    * support pub/sub message and rpc-style remote invocation
+    * Support pluggable transport protocol implementations. 
+    * Support client side synch/asynch method invocation
+    * Support server side synch/asynch method dispatch
+    * Support efficient data marshal/demarshal..
 
   ICC(internet communication controller): cross-platform framework for high performance communication
 The communication framework encapsulate facilities for cross-platform operating system processes / threads, network, 
